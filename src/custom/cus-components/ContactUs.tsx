@@ -1,3 +1,6 @@
+"use client"
+
+
 type Props = {
   outlet?: any;
 };

@@ -165,5 +165,8 @@ export const getOutlet = cache(async () => {
 
     // ✅ keep this
     web: data.web,
+     updatedAt: data.updatedAt
+      ? data.updatedAt.toDate().toISOString()
+      : null,
   };
 });

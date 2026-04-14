@@ -1,14 +1,26 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-export default function PrivacyPolicy() {
+type Props = {
+  outlet?: any;
+};
+
+export default function PrivacyPolicy({ outlet }: Props) {
+  const name = outlet?.outletName || "Restaurante";
+  const website = outlet?.web || "#";
+  const email = outlet?.email || "info@example.com";
+  
+  const formattedDate = outlet?.updatedAt
+    ? new Date(outlet.updatedAt).toLocaleDateString("en-GB")
+    : "";
+
   return (
     <div className="relative container mx-auto py-5 p-1">
       <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
 
         <div className="my-8 text-sm">
-          🔄{' '}
+          🔄{" "}
           <Link href="/privacy/en" className="text-blue-600 underline">
             Switch to English version
           </Link>
@@ -17,9 +29,9 @@ export default function PrivacyPolicy() {
         <h1 className="text-3xl font-bold mb-6">Política de privacidad</h1>
 
         <p className="mb-4">
-          En <strong>Pizzeria Milano Segle</strong> (
-          <a href="https://www.pizzeria.com" className="text-blue-600 underline">
-            www.pizzeria.com
+          En <strong>{name}</strong> (
+          <a href={website} className="text-blue-600 underline">
+            {website}
           </a>
           ) nos tomamos muy en serio la protección de sus datos personales. Esta política de privacidad explica qué datos recopilamos y cómo los utilizamos.
         </p>
@@ -62,9 +74,9 @@ export default function PrivacyPolicy() {
           Para ello, contáctenos en:
         </p>
         <p className="mb-4">
-          📧{' '}
-          <a href="mailto:info@pizzeria.com" className="text-blue-600 underline">
-            Bindujatt936@gmail.com
+          📧{" "}
+          <a href={`mailto:${email}`} className="text-blue-600 underline">
+            {email}
           </a>
         </p>
 
@@ -72,16 +84,17 @@ export default function PrivacyPolicy() {
         <p className="mb-4">
           Si tiene preguntas sobre la protección de datos, estamos disponibles en todo momento:
           <br />
-          📧{' '}
-          <a href="mailto:Bindujatt936@gmail.com" className="text-blue-600 underline">
-            Bindujatt936@gmail.com
+          📧{" "}
+          <a href={`mailto:${email}`} className="text-blue-600 underline">
+            {email}
           </a>
         </p>
 
         <p className="text-sm text-gray-500 mt-10">
-          Última actualización: {new Date().toLocaleDateString('es-ES')}
+          Última actualización: {formattedDate}
         </p>
 
+     
       </div>
     </div>
   );
