@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, JSX } from "react";
 import { useLanguage } from "@/store/LanguageContext";
-
+import { signOut } from "next-auth/react";
 import { GoHome } from "react-icons/go";
 import {
   MdDashboard,
@@ -181,12 +181,21 @@ const Sidebar = () => {
           ))}
         </ul>
 
-        <div className="mt-6 pt-4">
+        {/* <div className="mt-6 pt-4">
           <button className="flex items-center gap-3 px-4 py-2 w-full text-sm font-medium rounded-md bg-amber-600 text-white hover:bg-rose-700 transition">
             <IoIosLogOut size={20} />
             {BRANDING.sidebar.logout}
           </button>
-        </div>
+        </div> */}
+
+<button
+  onClick={() => signOut({ callbackUrl: "/auth/login" })}
+  className="flex items-center gap-3 px-4 py-2 w-full text-sm font-medium rounded-md bg-amber-600 text-white hover:bg-rose-700 transition"
+>
+  <IoIosLogOut size={20} />
+  {BRANDING.sidebar.logout}
+</button>
+
       </div>
     </>
   );

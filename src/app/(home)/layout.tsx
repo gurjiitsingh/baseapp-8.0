@@ -15,13 +15,11 @@ import Header from "@/custom/cus-components/Header";
 import { SEO } from "@/config/languages";
 import { getDynamicSEO } from "@/lib/seo/getSeo";
 
-import { Lato } from "next/font/google";
+
+
+
 import FooterWrapper from "@/components/FooterWrapper";
 
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const dynamicSEO = await getDynamicSEO();
@@ -68,19 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" translate="no">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Days+One&family=Dosis&family=Quicksand&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-
-      <body className={`${lato.className} bg-white text-[#2b2b2b]`}>
+ 
         <div className="text-[#2B2E4A]">
           <div translate="no">
             <UTMInitializer />
@@ -121,7 +107,6 @@ export default function RootLayout({
             />
           </div>
         </div>
-      </body>
-    </html>
+   
   );
 }
